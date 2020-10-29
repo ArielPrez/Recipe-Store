@@ -1,9 +1,10 @@
 <a [routerLink]="[idRoute]"
     routerLinkActive="active"
     class="list-group-item clearfix"
+    style="margin: 5px; border-radius: 10px;"
     [ngStyle]="{ 'background-image': 'url(' + img + ')'}">
     <span>
-        <div class="pull-left" style="margin: 5px; text-align: left;">
+        <div class="pull-left" style="margin: 15px; text-align: left;">
             <h4 class="list-group-item-heading"> {{ recipe.name }} </h4>
         </div>    
     </span>
