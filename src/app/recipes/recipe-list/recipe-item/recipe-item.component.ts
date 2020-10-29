@@ -10,7 +10,9 @@ export class RecipeItemComponent implements OnInit {
 
   @Input() recipe: Recipe;
   @Input() idRoute: number;
+  img: string;
 
   ngOnInit(): void {
+    this.img = this.recipe.imagePath;
   }
 }
