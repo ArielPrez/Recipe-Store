@@ -57,7 +57,7 @@ export class RecipeService {
     constructor(private shoppingListService: ShoppingListService) {}
 
     //  Return a new array which is an exact copy of the one in this service file (Array=> recipes)
-    getRecipe() {
+    getRecipes() {
         return this.recipes.slice();
     }
     // Passing the array of ingredients to ShoppingListService,
@@ -65,4 +65,7 @@ export class RecipeService {
     // addIngredientToShoppingList(ingredient: Ingredient[]) {
     //   this.shoppingListService.addManyIngredients(ingredient);
     // }
+    getRecipe(id: number){
+      return this.recipes[id];
+    }
 }
