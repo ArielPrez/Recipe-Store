@@ -1,4 +1,6 @@
-<a class="list-group-item clearfix">
+<a [routerLink]="[idRoute]"
+    routerLinkActive="active"
+    class="list-group-item clearfix">
     <div class="pull-left" style="margin: 5px; text-align: left;">
         <h4 class="list-group-item-heading"> {{ recipe.name }} </h4>
     </div>
@@ -6,6 +8,6 @@
         <img class="img-responsive"
             alt="{{ recipe.name }}"
             [src]="recipe.imagePath"
-            style="max-height: 80px; margin: 5px; text-align: right;">
+            style="max-height: 40px; margin: 5px; text-align: right; border-radius: 15px;">
     </span>
 </a>
