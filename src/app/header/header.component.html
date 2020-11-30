@@ -1,29 +1,26 @@
-<div class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
-                <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
-            </button>
-            <a routerLink="/" class="navbar-brand">Recipe Book</a>
-        </div>
-        <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">            
+<div class="navbar-nav navbar-light">
+    <div class="nav navbar-nav navbar-brand  navbar-expand-md">
+        <a class="nav-link" routerLink="/" class="navbar-brand"><h3 id="title">Recipe Book</h3></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nbCollapse" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse">            
             <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a> </li>
-                <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"
-                    appDropdown>
-                    <a class="dropdown-toggle" role="button">
-                        Manage
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a >Save Data</a></li>
-                        <li><a >Fetch Data</a></li>
-                    </ul>
+                <li routerLinkActive="active"><a class="nav-link" routerLink="/recipes">Recipes</a> </li>
+                <li routerLinkActive="active"><a class="nav-link" routerLink="/shopping-list">Shopping List</a></li>
+            
+                <li class="dropdown nav justify-content-end" appDropdown>
+                            <a class="dropdown-toggle nav-link" role="button" id="dropdownManage" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                                Manage
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownManage">
+                                <li><a class="dropdown-item">Save Data</a></li>
+                                <li><a class="dropdown-item">Fetch Data</a></li>
+                            </ul>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+
