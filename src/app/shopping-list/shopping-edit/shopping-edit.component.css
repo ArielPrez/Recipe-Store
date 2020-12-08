@@ -19,3 +19,7 @@ input.ng-pending{
   /* border-color: chocolate; */
   border-bottom: solid 3px chocolate;
 }
+#note{
+  font-size: large;
+  margin-top: 12%;
+}
