@@ -4,6 +4,7 @@ import { Ingredient } from '../shared/ingredient.model';
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {
     ingredientsChanged = new Subject<Ingredient[]>();
+    startedEditing = new Subject<number>();
     private ingredients: Ingredient[] = [
         new Ingredient('tazas de whatever', 6),
         new Ingredient('libra de loque sea', 3),
@@ -12,6 +13,9 @@ export class ShoppingListService {
     getIngredients() {
         // Return a copy of the Array ingredients, without parameters inside, the method returns all.
         return this.ingredients.slice();
+    }
+    getIngredient(index: number) {
+      return this.ingredients[index];
     }
     addIngredient(ingredient: Ingredient) {
         // Save the new ingredient.
@@ -27,5 +31,10 @@ export class ShoppingListService {
             // for (let iterator of ingredientsArray) {
             //     this.addIngredient(iterator);
             // }
+    }
+
+    updateIngrediente(index: number, newIngredient: Ingredient) {
+      this.ingredients[index] = newIngredient;
+      this.ingredientsChanged.next(this.ingredients.slice());
     }
 }
