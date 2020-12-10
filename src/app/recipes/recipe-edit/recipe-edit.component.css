@@ -1,0 +1,17 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched{
+  border: solid 1px red;
+}
+input.ng-pristine.ng-untouched,
+textarea.ng-pristine.ng-untouched{
+  border-bottom: solid 3px green;
+}
+input.ng-valid,
+textarea.ng-valid{
+  border: solid 1px green;
+}
+input.ng-pending,
+textarea.ng-pending{
+  /* border-color: chocolate; */
+  border-bottom: solid 3px chocolate;
+}

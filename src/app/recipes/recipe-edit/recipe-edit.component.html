@@ -72,7 +72,10 @@
       <!-- </div>
       <div class="row"> -->
         <div class="col-md-4">
-          <button type="submit" class="btn btn-success" style="margin-right: 5%;" >Safe</button>
+          <button type="submit"
+                  class="btn btn-success"
+                  style="margin-right: 5%;"
+                  [disabled]="!recipeForm.valid" >Safe</button>
           <button type="button" class="btn btn-danger">Cancel</button>
         </div>
       </div>
