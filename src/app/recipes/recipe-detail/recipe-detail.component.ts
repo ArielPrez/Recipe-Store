@@ -3,6 +3,7 @@ import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { relative } from 'path';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -38,6 +39,7 @@ export class RecipeDetailComponent implements OnInit {
   }
   onDelete() {
     this.recipeServ.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 
 }
