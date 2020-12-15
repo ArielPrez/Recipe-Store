@@ -20,14 +20,15 @@
             <input type="text"
                     id="imagePath"
                     class="form-control"
-                    formControlName="imgPath">
+                    formControlName="imgPath"
+                    #imagePath>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
-            <img class="img-responsive" src="" alt="">
+            <img class="img-responsive" [src]="imagePath.value" alt="">
           </div>
         </div>
       </div>
@@ -58,20 +59,24 @@
                     formControlName="amount">
             </div>
             <div class="col-md-2">
-              <button type="button" class="btn btn-danger">X</button>
+              <button type="button"
+                      class="btn btn-danger"
+                      (click)="onDeleteIngredient(i)">X</button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
           <button type="button" class="btn btn-secondary"
-                  (click)="addIngredient()">Add Ingredient</button>
+              (click)="addIngredient()">Add Ingredient</button>
+          <button type="button" class="btn btn-danger"
+              (click)="onDeleteAllIngredient()">Delete Ingredients</button>
         </div>
       <!-- </div>
       <div class="row"> -->
-        <div class="col-md-4">
+        <div class="col-md-6">
           <button type="submit"
                   class="btn btn-success"
                   style="margin-right: 5%;"

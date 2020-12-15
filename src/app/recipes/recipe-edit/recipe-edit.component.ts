@@ -52,14 +52,27 @@ export class RecipeEditComponent implements OnInit {
       })
     );
   }
+
+  onDeleteIngredient(index: number) {
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+
+    // The clear() method automatically loops through all registered
+    //   FormControls (or FormGroups) in the FormArray and removes them.
+    //   It's like manually creating a loop and calling removeAt() for every item.
+    // (<FormArray>this.recipeForm.get('ingredients')).clear();
+  }
+  onDeleteAllIngredient() {
+    (<FormArray>this.recipeForm.get('ingredients')).clear();
+  }
+
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   private initForm() {
-    let recName = '';
-    let recImgPath = '';
-    let recDescrip = '';
+    let recName = 'Arroz Frito';
+    let recImgPath = 'https://www.cocina-cubana.com/base/stock/Recipe/273-image/273-image_web.jpg';
+    let recDescrip = 'Arroz';
     const recIngredients = new FormArray([]);
 
     if (this.editMode) {

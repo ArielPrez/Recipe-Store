@@ -1,11 +1,20 @@
 <a [routerLink]="[idRoute]"
     routerLinkActive="active"
     class="list-group-item clearfix"
-    style="margin: 5px; border-radius: 10px; text-shadow: 2px 2px rgb(155, 155, 155); color:yellow;"
-    [ngStyle]="{ 'background-image': 'url(' + img + ')'}">
-    <span>
-        <div class="pull-left" style="margin: 15px; text-align: left;">
-            <h4 class="list-group-item-heading"> {{ recipe.name }} </h4>
-        </div>
-    </span>
+    style="cursor: pointer; margin: 5px; border-radius: 10px; text-shadow: 2px 2px rgb(155, 155, 155); color:yellow;"
+    [ngStyle]="{ 'background-image': 'url(' + recipe.imagePath + ')'}">
+
+  <div class="row">
+    <div class="col-md-6 pull-left">
+      <h4 class="list-group-item-heading"> {{ recipe.name }} </h4>
+      <!-- <p id="desc" class="list-group-item-text">{{ recipe.description }}</p> -->
+    </div>
+    <!-- <div class="col-md-1 pull-right">
+      <img
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="img-responsive"
+      style="max-height: 50px;">
+    </div> -->
+  </div>
 </a>

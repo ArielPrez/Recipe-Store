@@ -5,8 +5,9 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class RecipeService {
-    recipeSelected = new Subject<Recipe>();
+    // recipeSelected = new Subject<Recipe>();
     recipesChanged = new Subject<Recipe[]>();
+
     private recipes: Recipe[] = [
         new Recipe(
           'Arroz con pollo a la chorrera',
@@ -69,6 +70,9 @@ export class RecipeService {
     // }
     getRecipe(id: number) {
       return this.recipes[id];
+    }
+    addIngredientsToShoppingList(ingredients: Ingredient[]) {
+      this.shoppingListService.addManyIngredients(ingredients);
     }
     addRecipe(recipe: Recipe) {
       this.recipes.push(recipe);
