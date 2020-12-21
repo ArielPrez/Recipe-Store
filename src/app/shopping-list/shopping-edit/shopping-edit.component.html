@@ -2,8 +2,8 @@
   <div class="col list-group-item">
     <form (ngSubmit)="onAddOrUpdateItem(f)" #f="ngForm">
       <div class="row">
-        <div class="col-sm-6 form-group">
-          <div class="col-sm-10 form-group">
+        <div class="col-md-6 form-group">
+          <div class="col-md-12 form-group">
             <label for="name">Name</label>
             <input type="text"
                     id="name"
@@ -12,7 +12,7 @@
                     ngModel
                     required>
           </div>
-          <div class="col-sm-6 form-group">
+          <div class="col-md-8 form-group">
             <label for="amount">Amount</label>
             <input type="number"
                     id="amount"
@@ -22,7 +22,7 @@
                     required
                     pattern="^[1-9]+[0-9]*$">
           </div>
-          <div class="col-sm-10 form-group">
+          <div class="col-md-12 form-group">
               <button type="submit" class="btn btn-success"
                 [disabled]="!f.valid"> {{ editMode ? 'Update' : 'Add' }} </button>
               <button type="button" class="btn btn-danger"
@@ -31,7 +31,7 @@
               <button type="button" class="btn btn-primary" (click)="onClear()">CLear</button>
           </div>
         </div>
-        <div class="col-sm-5"
+        <div class="col-md-6"
             *ngIf="editMode">
             <label id="note">
               You are editting the item: {{ editedItemIndex+1 }}

@@ -12,6 +12,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ingredientsComp: Ingredient[];
   private igChangeSub: Subscription;
+  filterWord = [];
 
   constructor(private shoppingListService: ShoppingListService) { }
 
@@ -26,6 +27,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
         this.ingredientsComp = ingredients;
       }
     );
+    if (!this.ingredientsComp) {
+      this.filterWord = this.ingredientsComp;
+    }
   }
 
   onEditItem(index: number) {
