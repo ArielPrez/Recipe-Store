@@ -1,4 +1,10 @@
-# MyFirstApp
+# Recipe-Store
+
+Project made in Angular.
+
+Front-End Web Application that allow to create and edit recipes. Interacts with the user to show the content in a reactive way, filtering and modifing the result acording the user needs.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
