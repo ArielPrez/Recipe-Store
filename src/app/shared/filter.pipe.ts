@@ -2,7 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Ingredient } from './ingredient.model';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  // To focusing on whether the pipe arguments changed,
+  // with this property, it will be recalculated whenever
+  // anything changes on the page.
+  pure: false
+  // this might be a bad behavior due to performance issues.
 })
 export class FilterPipe implements PipeTransform {
 
