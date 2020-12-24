@@ -1,48 +1,60 @@
 <div class="row">
-    <div class="col-md-12">
-        <app-shopping-edit></app-shopping-edit>
-        <div class="col-md-8">
-          <hr>
-          <div class="form-group">
-            <label for="filter">Filter by ingredient name: </label>
+    <div class="col-md-6">
+      <hr>
+      <div class="input-group">
+        <div class="col-md-6">
+          <label for="filter">Filter by ingredient name: </label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button> -->
+              <button type="button" id="button-addon1" class="btn btn-outline-primary" (click)="onClear()">Clear</button>
+            </div>
             <input type="text"
                   class="form-control"
                   id="filter"
                   [(ngModel)]="filterWord">
           </div>
-          <hr>
-          <ul class="list-group">
-            <div class="row">
-              <label class="col-md-2" for="number" style="text-align: center;">
-                Item
-              </label>
-              <label class="col-md-4" for="ingredient" style="text-align: justify;">
-                Ingredient
-              </label>
-              <label class="col-md-4" for="ingredient" style="text-align: justify;">
-                Amount
-              </label>
-            </div>
-
-            <a class="list-group-item" style="cursor: pointer"
-            *ngFor="let item of ingredientsComp | filter:filterWord:'name'; let i = index"
-            (click)="onEditItem(i)"
-            >
-              <div class="row">
-                <span class="col-md-2">
-                  {{ i+1 }}
-                </span>
-                <label class="col-md-4" id="ingredient" >
-                  {{ item.name }}
-                </label>
-                <label class="col-md-2" id="number">
-                  [ {{ item.amount }} ]
-                </label>
-              </div>
-            </a>
-        </ul>
-
         </div>
+        <div class="col-md-6">
+          <label for="quantity" >Total Ingredients: [ {{ ingredientQuantity | async }} ] </label>
+        </div>
+      </div>
+
+      <hr>
+      <ul class="list-group">
+        <div class="row">
+          <label class="col-md-2" for="number" style="text-align: center;">
+            Item
+          </label>
+          <label class="col-md-4" for="ingredient" style="text-align: justify;">
+            Ingredient
+          </label>
+          <label class="col-md-4" for="ingredient" style="text-align: justify;">
+            Amount
+          </label>
+        </div>
+
+        <a class="list-group-item" style="cursor: pointer"
+        *ngFor="let item of ingredientsComp | filter:filterWord:'name'; let i = index"
+        (click)="onEditItem(i)"
+        >
+          <div class="row">
+            <span class="col-md-2">
+              {{ i+1 }}
+            </span>
+            <label class="col-md-4" id="ingredient" >
+              {{ item.name }}
+            </label>
+            <label class="col-md-2" id="number">
+              [ {{ item.amount }} ]
+            </label>
+          </div>
+        </a>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <app-shopping-edit></app-shopping-edit>
 
     </div>
 </div>

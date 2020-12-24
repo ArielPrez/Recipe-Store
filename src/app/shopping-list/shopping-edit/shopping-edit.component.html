@@ -2,8 +2,8 @@
   <div class="col list-group-item">
     <form (ngSubmit)="onAddOrUpdateItem(f)" #f="ngForm">
       <div class="row">
-        <div class="col-md-6 form-group">
-          <div class="col-md-12 form-group">
+        <div class="col-md-12 form-group">
+          <div class="col-md-10 form-group">
             <label for="name">Name</label>
             <input type="text"
                     id="name"
@@ -12,7 +12,7 @@
                     ngModel
                     required>
           </div>
-          <div class="col-md-8 form-group">
+          <div class="col-md-5 form-group">
             <label for="amount">Amount</label>
             <input type="number"
                     id="amount"
@@ -28,13 +28,13 @@
               <button type="button" class="btn btn-danger"
                     *ngIf="editMode"
                     (click)="onDelete()">Delete</button>
-              <button type="button" class="btn btn-primary" (click)="onClear()">CLear</button>
+              <button type="button" class="btn btn-primary" (click)="onClear()">Clear</button>
           </div>
         </div>
-        <div class="col-md-6"
+        <div class="col-md-12"
             *ngIf="editMode">
             <label id="note">
-              You are editting the item: {{ editedItemIndex+1 }}
+              You are editting item: {{ editedItemIndex+1 }}
             </label>
         </div>
       </div>
