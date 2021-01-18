@@ -1,36 +1,54 @@
-<div class="navbar-light navbar-expand-lg row">
-  <div class="col-md-2" >
-    <div class="row">
-      <div class="col-md-10">
-        <a class="nav-link nav-item" routerLink="/" class="navbar-brand"><h3 id="title">Recipe Store</h3></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand"
+        routerLinkActive="active"
+        routerLink="/">
+      <h3 id="title">Recipe Store</h3>
+    </a>
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#nbCollapse"
+            aria-controls="nbCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse"
+          id="nbCollapse">
+      <ul class="navbar-nav nav-tabs "
+          style="border-bottom: 0px solid rgb(255, 255, 255); margin-right: 60%;">
+        <li class="nav-item " >
+          <a class="nav-link"
+              routerLinkActive="active"
+              routerLink="/recipes">Recipes </a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link"
+              routerLinkActive="active"
+              routerLink="/shopping-list">Shopping List</a>
+        </li>
+
+      </ul>
+      <div class="justify-content-end" style="border-bottom: 0px solid rgb(206, 206, 206);">
+        <ul class="navbar-nav  mr-auto">
+          <li class="nav-item dropdown"
+              id="drop">
+            <a class="nav-link dropdown-toggle"
+                id="dropdownManage"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">Manage</a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
+                  aria-labelledby="dropdownManage">
+                  <a class="dropdown-item" (click)="onSaveData()"><li>Save Data</li></a>
+                  <a class="dropdown-item" (click)="fetchRecipes()"><li>Fetch Data</li></a>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="col-md-2">
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nbCollapse" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
+
     </div>
   </div>
-
-  <div class="collapse navbar-collapse col-md-10" id="nbCollapse">
-          <div class="col-md-10">
-            <ul class="navbar-nav nav-tabs">
-              <li routerLinkActive="active"><a class="nav-link nav-item" routerLink="/recipes">Recipes</a> </li>
-              <li routerLinkActive="active"><a class="nav-link nav-item" routerLink="/shopping-list">Shopping List</a></li>
-            </ul>
-          </div>
-          <div class="col-md-2">
-            <ul class="navbar-nav">
-              <li class="dropdown nav justify-content-end nav-item" appDropdown>
-                <a class="dropdown-toggle nav-link" role="button" id="dropdownManage" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                    Manage
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownManage">
-                    <a class="dropdown-item" (click)="onSaveData()"><li>Save Data</li></a>
-                    <a class="dropdown-item" (click)="fetchRecipes()"><li>Fetch Data</li></a>
-                </ul>
-              </li>
-            </ul>
-          </div>
-  </div>
-</div>
+</nav>
