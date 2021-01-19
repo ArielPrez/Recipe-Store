@@ -1,3 +1,4 @@
+import { AuthComponent } from './auth/auth.component';
 import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Resolve } from '@angular/router';
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'shopping-list', component:  ShoppingListComponent },
+    { path: 'auth', component: AuthComponent},
     { path: '', redirectTo: '/recipes', pathMatch: 'full' },
     // { path: 'not-found', component: PageNotFoundComponent, data{message: 'Page not found!'} },
     { path: '**', redirectTo: '/not-found' }

@@ -19,6 +19,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { ShortenPipe } from './shared/shorten.pipe';
 import { FilterPipe } from './shared/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     RecipeStartComponent,
     RecipeEditComponent,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
