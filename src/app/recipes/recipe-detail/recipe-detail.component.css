@@ -1,5 +1,11 @@
 .img-responsive{
-    max-height: 200px;
+    max-height: 250px;
+    max-width: 250px;
+    padding: 2px 2px 2px 2px;
+    margin: 0px 20px 20px 10px;
+  border: 1px solid rgb(212, 212, 212);
+  background-color: white;
+  box-shadow: 5px 5px 5px rgb(212, 212, 212);
 }
 .row{
     margin: 10px 0px 20px 0px;

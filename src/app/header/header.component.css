@@ -9,24 +9,24 @@
 .row{
   margin-right: 0%;
 }
-.nav-tabs{
-  padding-bottom: 10px;
+
+.nav-tabs:hover{
+  border-bottom: 0px solid rgb(222, 226, 230);
 }
 .dropdown-menu{
   border: solid 1px rgb(222, 226, 230);
 }
-/* .dropdown-menu>a>li{
-  padding: 5px 0px 5px 15px;
-  margin: 0%;
-} */
-.dropdown-menu>a>li:hover::selection{
-  background-color: rgb(230, 230, 230);
+
+.nav-item{
+  border-bottom: 1px solid rgb(222, 226, 230);
 }
 
-ul>li{
+#fill{
+  padding-right: 400px;
   border-bottom: 1px solid rgb(222, 226, 230);
 }
 
 #drop{
   border-bottom: 0px solid rgb(222, 226, 230);
 }
+
