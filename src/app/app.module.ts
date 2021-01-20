@@ -20,6 +20,7 @@ import { ShortenPipe } from './shared/shorten.pipe';
 import { FilterPipe } from './shared/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthComponent } from './auth/auth.component';
     RecipeEditComponent,
     ShortenPipe,
     FilterPipe,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

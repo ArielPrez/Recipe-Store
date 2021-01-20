@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 export class AuthComponent implements OnInit {
 
   isLoginMode = true;
+  isLoading = false;
+  error: string = null;
 
   constructor(private authService: AuthService) { }
 
@@ -21,20 +23,23 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmitAuth(form: NgForm) {
-    const emailTo = form.value.email;
-    const passw = form.value.password;
 
     if (!form.valid) {
       return;
     }
+    const emailTo = form.value.email;
+    const passw = form.value.password;
+    this.isLoading = true;
     if (this.isLoginMode) {
       // ...
     } else {
       this.authService.signup(emailTo, passw).subscribe(
         (resData) => {
           console.log(resData);
+          this.isLoading = false;
         }, error => {
-          console.log(error);
+          this.error = 'An error ocurred!';
+          this.isLoading = false;
         }
       );
     }
