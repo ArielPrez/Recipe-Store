@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-interface AuthResponseData {
+export interface AuthResponseData {
   // A Firebase Auth ID token for the newly created user.
   idToken:	string;
   // The email for the newly created user.
@@ -14,6 +14,8 @@ interface AuthResponseData {
   expiresIn:	string;
   // The uid of the newly created user.
   localId:	string;
+  // Whether the email is for an existing account.
+  registered?: boolean;
 }
 
 @Injectable({
@@ -48,6 +50,17 @@ export class AuthService {
           return throwError(errorMessage);
         }
       )
+    );
+  }
+
+  login(email: string, passw: string) {
+    return this.http.post<AuthResponseData>(
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC9h9Wj9REMoBcsyoUxczZmJxGoOlgqV2c',
+      {
+        email: email,
+        password: passw,
+        returnSecureToken: true
+      }
     );
   }
 
