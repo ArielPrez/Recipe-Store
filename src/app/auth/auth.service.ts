@@ -1,7 +1,8 @@
+import { User } from './user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError, Subject } from 'rxjs';
 
 export interface AuthResponseData {
   // A Firebase Auth ID token for the newly created user.
@@ -23,6 +24,8 @@ export interface AuthResponseData {
 })
 export class AuthService {
 
+  user = new Subject<User>();
+
   constructor(private http: HttpClient) { }
 
   signup(email: string, passw: string) {
@@ -33,7 +36,12 @@ export class AuthService {
         password: passw,
         returnSecureToken: true
       }
-    ).pipe(catchError(this.handleError));
+    ).pipe(catchError(this.handleError),
+    tap(
+      (resData) => {
+        this.handleUser(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
+      }
+    ));
   }
 
   login(email: string, passw: string) {
@@ -44,9 +52,31 @@ export class AuthService {
         password: passw,
         returnSecureToken: true
       }
-    ).pipe(catchError(this.handleError));
+    ).pipe(catchError(this.handleError),
+    tap(
+      (resData) => {
+        this.handleUser(resData.email, resData.localId, resData.idToken, +resData.expiresIn);
+      }
+    ));
   }
 
+
+  // Method to handle the user authentication using the model,
+  // with the respective data including an expiration date.
+  private handleUser(email: string, userId: string, token: string, expiresIn: number) {
+    const expirationDate = new Date(
+      new Date().getTime() + expiresIn * 1000
+    );
+    const user = new User(
+      email,
+      userId,
+      token,
+      expirationDate
+    );
+    this.user.next(user);
+  }
+
+  // Method to handle the errors, through the pipe so to change the response.
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unkown error occurred!';
     if (!errorRes.error || !errorRes.error.error) {
