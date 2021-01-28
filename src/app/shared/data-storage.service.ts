@@ -1,8 +1,9 @@
+import { AuthService } from './../auth/auth.service';
 import { Recipe } from './../recipes/recipe.model';
 import { RecipeService } from '../recipes/services/recipe.service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { exhaustMap, map, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { map, tap } from 'rxjs/operators';
 export class DataStorageService {
 
   constructor(private http: HttpClient,
-              private recipeService: RecipeService) { }
+              private recipeService: RecipeService,
+              private authService: AuthService) { }
 
   storeRecipes() {
     const recipes = this.recipeService.getRecipes();
@@ -25,8 +27,19 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.http.get<Recipe[]>('https://recipe-store-book-default-rtdb.firebaseio.com/recipe.json')
-    .pipe(map(
+    return this.authService.user.pipe(
+      take(1),
+      exhaustMap(
+        user => {
+          return this.http.get<Recipe[]>(
+            'https://recipe-store-book-default-rtdb.firebaseio.com/recipe.json',
+            {
+              params: new HttpParams().set('auth', user.token)
+            }
+          );
+        }
+      ),
+      map(
         (recipes) => {
           return recipes.map(
             (recipe) => {
@@ -35,9 +48,11 @@ export class DataStorageService {
           );
         }
       ),
-      tap((recipes) => {
-        this.recipeService.setRecipes(recipes);
-      }
-      ));
+      tap(
+        (recipes) => {
+          this.recipeService.setRecipes(recipes);
+        }
+      )
+    );
   }
 }

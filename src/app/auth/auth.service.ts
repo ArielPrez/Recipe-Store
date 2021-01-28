@@ -2,7 +2,7 @@ import { User } from './user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError, Subject } from 'rxjs';
+import { throwError, BehaviorSubject, Subject } from 'rxjs';
 
 export interface AuthResponseData {
   // A Firebase Auth ID token for the newly created user.
@@ -24,7 +24,7 @@ export interface AuthResponseData {
 })
 export class AuthService {
 
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) { }
 
