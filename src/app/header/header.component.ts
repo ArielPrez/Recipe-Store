@@ -28,6 +28,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
 
+  onLogout() {
+    this.authServ.authLogout();
+  }
+
   onSaveData() {
     this.dataStorage.storeRecipes();
   }

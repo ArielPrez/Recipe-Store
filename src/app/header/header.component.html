@@ -43,7 +43,7 @@
       <div class="justify-content-end" style="border-bottom: 0px solid rgb(206, 206, 206);">
         <ul class="navbar-nav">
           <li *ngIf="isAuthenticated" class="nav-item">
-            <a class="nav-link">Logout</a>
+            <a class="nav-link" (click)="onLogout()">Logout</a>
           </li>
           <li *ngIf="isAuthenticated" class="nav-item dropdown"
               id="drop">
