@@ -62,6 +62,30 @@ export class AuthService {
     ));
   }
 
+  autoLogin() {
+    const userLocalStoraged: {
+    email: string;
+    id: string;
+    _token: string;
+    _tokenExpirationDate: string;
+    } = JSON.parse(localStorage.getItem('userData'));
+
+    if (!userLocalStoraged) {
+      return;
+    }
+
+    const loggedUser = new User(
+    userLocalStoraged.email,
+    userLocalStoraged.id,
+    userLocalStoraged._token,
+    new Date(userLocalStoraged._tokenExpirationDate)
+    );
+
+    if ( loggedUser.token ) {
+      this.user.next(loggedUser);
+    }
+  }
+
 
   // Method to handle the user authentication using the model,
   // with the respective data including an expiration date.
@@ -76,6 +100,7 @@ export class AuthService {
       expirationDate
     );
     this.user.next(user);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   // Method to handle the errors, through the pipe so to change the response.
