@@ -22,6 +22,9 @@ import { FilterPipe } from './shared/filter.pipe';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AlertComponent } from './shared/alert/alert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppNgMaterialModule } from './app-ng-material.module';
 
 @NgModule({
   declarations: [
@@ -40,14 +43,17 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     ShortenPipe,
     FilterPipe,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    AppNgMaterialModule
   ],
   providers: [
     {
