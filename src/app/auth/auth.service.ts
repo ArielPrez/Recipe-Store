@@ -33,7 +33,7 @@ export class AuthService {
 
   signup(email: string, passw: string) {
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC9h9Wj9REMoBcsyoUxczZmJxGoOlgqV2c',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyC9h9Wj9REMoBcsyoUxczZmJxGoOlgqV2c',
       {
         email: email,
         password: passw,
@@ -49,7 +49,7 @@ export class AuthService {
 
   login(email: string, passw: string) {
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC9h9Wj9REMoBcsyoUxczZmJxGoOlgqV2c',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyC9h9Wj9REMoBcsyoUxczZmJxGoOlgqV2c',
       {
         email: email,
         password: passw,

@@ -1,5 +1,6 @@
 {
       "editor.fontSize": 14,
       "editor.tabSize": 6,
-      "editor.cursorStyle": "underline"
+      "editor.cursorStyle": "underline",
+      "json.maxItemsComputed": 10000
 }

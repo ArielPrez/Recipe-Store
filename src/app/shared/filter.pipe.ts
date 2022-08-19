@@ -14,12 +14,12 @@ export class FilterPipe implements PipeTransform {
   // value => the ingredient that enter in the pipe
   // filterString => the string wrote in the input field filter
   // propName => the field of the Array that we want to match. (the name)
-  transform(value: Ingredient[], filterString: string, propName: string): any {
+  transform(value: Ingredient[], filterString: string, propName: string): Array<Ingredient> {
     if (value.length === 0 || filterString.length === 0) {
       return value;
     }
 
-    const resultArray = [];
+    const resultArray: Array<Ingredient> = [];
     for (const item of value) {
       if (item[propName] === filterString) {
         resultArray.push(item);

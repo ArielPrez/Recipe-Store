@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
 
-  ingredientQuantity = new Promise(
+  public ingredientQuantity = new Promise(
     (resolve, reject) => {
       setTimeout(
         () => {
@@ -19,14 +19,14 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       );
     }
   );
-  ingredientsComp: Ingredient[];
   private igChangeSub: Subscription;
-  filterWord = [];
-  amount = 0;
+  public ingredientsComp: Ingredient[];
+  public filterWord: string = '';
+  public amount: number = 0;
 
   constructor(private shoppingListService: ShoppingListService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     // This method return a copy of the array of Ingredients,
     // and it save it to list it.
     this.ingredientsComp = this.shoppingListService.getIngredients();
@@ -38,7 +38,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       }
     );
     if (!this.ingredientsComp) {
-      this.filterWord = this.ingredientsComp;
+      // this.filterWord = this.ingredientsComp;
+      this.filterWord = '';
     }
     this.ingredientsComp.forEach(
       () => {
@@ -47,14 +48,14 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     );
   }
 
-  onEditItem(index: number) {
+  public onEditItem(index: number) {
     this.shoppingListService.startedEditing.next(index);
   }
-  onClear() {
-    this.filterWord = [];
+  public onClear() {
+    this.filterWord = '';
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.igChangeSub.unsubscribe();
   }
 

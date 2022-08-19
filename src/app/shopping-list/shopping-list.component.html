@@ -34,9 +34,10 @@
           </label>
         </div>
 
+        <!-- *ngFor="let item of ingredientsComp | filter : ingredientsComp : filterWord : 'name' ; let i = index" -->
         <a class="list-group-item" style="cursor: pointer"
-        *ngFor="let item of ingredientsComp | filter:filterWord:'name'; let i = index"
-        (click)="onEditItem(i)"
+            *ngFor="let item of ingredientsComp | filter : filterWord : 'name'; let i = index"
+            (click)="onEditItem(i)"
         >
           <div class="row">
             <span class="col-md-2">
